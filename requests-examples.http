@@ -1,0 +1,76 @@
+# примеры API-запросов
+
+#user:
+#Authorization: Token e2e3ceb43260a6d058af9de8128bdbb3979ad49b
+#admin:
+#Authorization: Token 9d0b5121c507f4ef6f5dc1e528b076114ea94de0
+
+# получение объявлений
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+#Authorization: Token e2e3ceb43260a6d058af9de8128bdbb3979ad49b
+
+###
+
+# создание объявления
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token e2e3ceb43260a6d058af9de8128bdbb3979ad49b
+
+{
+  "title": "Шкаф sdadsada",
+  "description": "Срочно",
+  "is_draft": 2
+}
+
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/advertisements/4/
+Content-Type: application/json
+Authorization: Token 9d0b5121c507f4ef6f5dc1e528b076114ea94de0
+
+{
+  "status": "CLOSED"
+}
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/advertisements/?creator=1
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/advertisements/?created_at_before=2021-12-03
+Content-Type: application/json
+
+###
+
+DELETE {{baseUrl}}/advertisements/3/
+Content-Type: application/json
+Authorization: Token 362f907c63ea155faf8c72efeb81e7fe22445300
+
+###
+
+
+GET {{baseUrl}}/advertisements/?status=CLOSED
+Content-Type: application/json
+
+###
+
+PATCH {{baseUrl}}/advertisements/11/set_favorite/
+Authorization: Token e2e3ceb43260a6d058af9de8128bdbb3979ad49b
+#Authorization: Token 9d0b5121c507f4ef6f5dc1e528b076114ea94de0
+
+###
+
+PATCH {{baseUrl}}/advertisements/13/unset_favorite/
+Authorization: Token e2e3ceb43260a6d058af9de8128bdbb3979ad49b
+
+###
+
+GET {{baseUrl}}/advertisements/?favorite=true
+Authorization: Token e2e3ceb43260a6d058af9de8128bdbb3979ad49b
+
